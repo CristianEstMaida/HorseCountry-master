@@ -26,7 +26,7 @@ const NavBar = () => {
                             Inicio
                         </Link>
                         <Link
-                            to="/"
+                            to="/catalogo"
                             className="text-[#f5f5dc] hover:text-[#d4af37] font-medium transition-colors duration-200"
                             data-testid="nav-catalogue-link"
                         >

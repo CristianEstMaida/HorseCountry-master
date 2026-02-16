@@ -64,7 +64,9 @@ const Hero = () => {
                     <p className="text-xl md:text-2xl text-[#d4af37] mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                         {heroImages[currentIndex].subtitle}
                     </p>
-                    <button className="px-8 py-4 bg-[#d4af37] text-[#3d2817] rounded-lg font-bold text-lg hover:bg-[#b8860b] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
+                    <button 
+                        onClick={() => document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' })}
+                        className="px-8 py-4 bg-[#d4af37] text-[#3d2817] rounded-lg font-bold text-lg hover:bg-[#b8860b] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
                     >
                         Explorar Catálogo
                     </button>
