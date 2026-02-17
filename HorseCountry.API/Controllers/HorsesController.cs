@@ -17,17 +17,24 @@ public class HorsesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Horse>>> Get()
+    public async Task<ActionResult> Get([FromQuery] int page = 1, [FromQuery] int pageSize = 8)
     {
-        // Importante: .Include trae los datos de las tablas auxiliares (Breed, Color, etc)
-        var horses = await _context.Horses
+        var query = _context.Horses.AsQueryable();
+
+        var totalItems = await query.CountAsync();
+        var horses = await query
             .Include(h => h.Breed)
             .Include(h => h.Color)
-            .Include(h => h.Gender)
-            .Include(h => h.Status)
+            .Skip((page - 1) * pageSize) // Salta los de las páginas anteriores
+            .Take(pageSize)              // Toma solo los de la página actual
             .ToListAsync();
 
-        return Ok(horses);
+        return Ok(new { 
+            TotalItems = totalItems,
+            TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
+            CurrentPage = page,
+            Items = horses 
+        });
     }
 
     [HttpGet("{id}")]
