@@ -1,8 +1,13 @@
-
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Hero = () => {
+    const navigate = useNavigate(); // 2. Inicializar la función de navegación
+
+    const handleExplorarClick = () => {
+        navigate('/catalogo'); // 3. Definir la ruta a la que quieres ir
+    };
     const [currentIndex, setCurrentIndex] = useState(0);
     // Imágenes para el carrusel
     const heroImages = [
@@ -65,7 +70,7 @@ const Hero = () => {
                         {heroImages[currentIndex].subtitle}
                     </p>
                     <button 
-                        onClick={() => document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' })}
+                        onClick={handleExplorarClick}
                         className="px-8 py-4 bg-[#d4af37] text-[#3d2817] rounded-lg font-bold text-lg hover:bg-[#b8860b] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
                     >
                         Explorar Catálogo

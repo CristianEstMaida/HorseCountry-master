@@ -7,4 +7,5 @@ public class HorseDto
     public decimal Price { get; set; }
     public string Description { get; set; } = string.Empty;
     public string Status { get; set; } = string.Empty;
+    public int StatusId { get; set; }
 }

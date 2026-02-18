@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 
+const userRole = localStorage.getItem('userRole');
 const NavBar = () => {
     return (
         <nav className="fixed top-0 left-0 right-0 bg-[#3d2817]/95 backdrop-blur-sm z-50 shadow-lg">
@@ -32,12 +33,18 @@ const NavBar = () => {
                         >
                             Catálogo
                         </Link>
-                        <button
+                        <Link
+                            to="/login"
                             className="px-6 py-2.5 bg-[#d4af37] text-[#3d2817] rounded-lg font-semibold hover:bg-[#b8860b] transition-colors duration-200 shadow-md hover:shadow-xl"
                             data-testid="login-button"
                         >
                             Iniciar Sesión
-                        </button>
+                        </Link>
+                        {userRole === 'ADMIN' && (
+                        <Link to="/admin" className="text-[#8B4513] font-bold hover:underline">
+                            🔧 Panel Admin
+                        </Link>
+                        )}
                     </div>
 
                 </div>

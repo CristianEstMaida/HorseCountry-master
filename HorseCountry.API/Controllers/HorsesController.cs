@@ -25,6 +25,7 @@ public class HorsesController : ControllerBase
         var horses = await query
             .Include(h => h.Breed)
             .Include(h => h.Color)
+            .Include(h => h.Status)
             .Skip((page - 1) * pageSize) // Salta los de las páginas anteriores
             .Take(pageSize)              // Toma solo los de la página actual
             .ToListAsync();
@@ -51,4 +52,42 @@ public class HorsesController : ControllerBase
 
         return Ok(horse);
     }
+
+    /*[HttpPut("{id}")]
+    public async Task<IActionResult> UpdateHorse(int id, [FromBody] HorseDto horseDto)
+    {
+        var horse = await _context.Horses.FindAsync(id);
+        if (horse == null) return NotFound();
+
+        
+        if (Enum.TryParse(typeof(Status), horseDto.Status, out var statusObj))
+        {
+            horse.Status = (Status)statusObj;
+        }
+        else
+        {
+            return BadRequest($"Estado inválido: {horseDto.Status}");
+        }
+
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }*/
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateHorse(int id, [FromBody] HorseDto horseDto)
+    {
+        var horse = await _context.Horses.FindAsync(id);
+        if (horse == null) return NotFound();
+
+        // Actualizamos directamente usando el ID numérico que viene del Front
+        horse.StatusId = horseDto.StatusId;
+        
+        // Si quieres permitir cambiar el nombre o precio en el mismo botón:
+        if (!string.IsNullOrEmpty(horseDto.Name)) horse.Name = horseDto.Name;
+        horse.Price = (double)horseDto.Price;
+
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+
 }
