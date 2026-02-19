@@ -45,6 +45,11 @@ const NavBar = () => {
                             🔧 Panel Admin
                         </Link>
                         )}
+                        {userRole === 'Vendedor' && (
+                        <Link to="/alta" className="text-[#8B4513] font-bold hover:underline" >
+                            Alta caballo
+                        </Link>
+                        )}
                     </div>
 
                 </div>

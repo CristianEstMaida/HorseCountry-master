@@ -8,4 +8,8 @@ public class HorseDto
     public string Description { get; set; } = string.Empty;
     public string Status { get; set; } = string.Empty;
     public int StatusId { get; set; }
+    public int BreedId { get; set; }
+    public int ColorId { get; set; }
+    public int GenderId { get; set; }
+    
 }

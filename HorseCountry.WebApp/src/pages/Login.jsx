@@ -93,6 +93,7 @@ const Login = () => {
           <p className="text-xs font-bold text-gray-400 uppercase mb-2">Credenciales de prueba:</p>
           <p className="text-xs text-gray-600">Admin: admin@horsetrust.com / admin123</p>
           <p className="text-xs text-gray-600">Comprador: comprador@test.com / 123456</p>
+          <p className="text-xs text-gray-600">Vendedor: vendedor@test.com / 123456</p>
         </div>
       </div>
     </div>

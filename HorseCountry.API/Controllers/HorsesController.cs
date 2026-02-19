@@ -89,5 +89,29 @@ public class HorsesController : ControllerBase
         return NoContent();
     }
 
+    [HttpPost]
+    public async Task<ActionResult<Horse>> CreateHorse([FromBody] HorseDto horseDto)
+    {
+        // 1. Crear la entidad a partir del DTO
+        var newHorse = new Horse
+        {
+            Name = horseDto.Name,
+            Descriprtion = horseDto.Description, // Nota: En tu entidad está escrito como 'Descriprtion'
+            Price = (double)horseDto.Price,
+            BreedId = horseDto.BreedId,
+            ColorId = horseDto.ColorId,
+            StatusId = 1, // Por defecto 'Disponible'
+            GenderId = horseDto.GenderId,
+            UserId = 1, // Aquí deberías usar el ID del usuario autenticado
+            CreatedAt = DateTime.UtcNow.TimeOfDay,
+            UpdatedAt = DateTime.UtcNow.TimeOfDay
+        };
+
+        _context.Horses.Add(newHorse);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetById), new { id = newHorse.Id }, newHorse);
+    }
+
 
 }
