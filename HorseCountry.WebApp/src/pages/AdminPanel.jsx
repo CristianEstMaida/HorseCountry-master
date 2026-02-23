@@ -28,25 +28,47 @@ const AdminPanel = () => {
   }, [currentPage]); // Se vuelve a ejecutar cuando cambias de página
 
   const handleStatusChange = async (id, nuevoStatusId) => {
+    const horseActual = paginationData.items.find(h => h.id === id);
+  
+    if (!horseActual) return;
+
     try {
+      // 2. Armamos el objeto combinando lo que ya tenemos con el nuevo estado
+      const horseToUpdate = {
+      name: horseActual.name || horseActual.Name,
+      price: horseActual.price || horseActual.Price,
+      descriprtion: horseActual.descriprtion || horseActual.Descriprtion, // Tu typo
+      statusId: parseInt(nuevoStatusId), // Aseguramos que sea un número
+      // Agregamos los IDs obligatorios para que EF no intente crearlos de nuevo
+      breedId: horseActual.breedId || horseActual.BreedId,
+      colorId: horseActual.colorId || horseActual.ColorId,
+      genderId: horseActual.genderId || horseActual.GenderId
+      };
+
       const response = await fetch(`http://localhost:5233/api/horses/${id}`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}` 
         },
-        body: JSON.stringify({ 
-          statusId: parseInt(nuevoStatusId) 
-        })
+        // 3. Ahora enviamos el objeto con el PRECIO REAL que rescatamos del estado
+        body: JSON.stringify(horseToUpdate) 
       });
 
       if (response.ok) {
-        // Actualizamos paginationData.items para reflejar el cambio en la tabla
         setPaginationData(prev => ({
           ...prev,
-          items: prev.items.map(h => h.id === id ? { ...h, statusId: parseInt(nuevoStatusId) } : h)
+          items: prev.items.map(h => {
+            const currentId = h.id || h.Id;
+            return currentId === id ? { ...h, statusId: parseInt(nuevoStatusId), StatusId: parseInt(nuevoStatusId) } : h;
+          })
         }));
         alert("Estado actualizado con éxito");
+      } else {
+        // Si falla, vemos qué dice la API
+        const errorData = await response.text();
+        console.error("Detalle del error 400:", errorData);
+        alert("Error al actualizar: Revisa la consola para más detalles.");
       }
     } catch (error) {
       console.error("Error al actualizar:", error);
@@ -65,6 +87,7 @@ const AdminPanel = () => {
             <tr className="bg-[#8B4513] text-white">
               <th className="px-5 py-3 border-b-2 text-left text-sm font-semibold uppercase">Caballo</th>
               <th className="px-5 py-3 border-b-2 text-left text-sm font-semibold uppercase">Raza / Color</th>
+              <th className="py-3 px-6 text-center">Precio</th>
               <th className="px-5 py-3 border-b-2 text-left text-sm font-semibold uppercase">Estado Actual</th>
               <th className="px-5 py-3 border-b-2 text-left text-sm font-semibold uppercase">Acciones</th>
             </tr>
@@ -80,6 +103,9 @@ const AdminPanel = () => {
                   <p className="text-gray-600">{horse.breed?.description || 'N/A'}</p>
                   <p className="text-xs text-gray-400">{horse.color?.description}</p>
                 </td>
+                <td className="py-3 px-6 text-center font-bold text-blue-600">
+                  ${horse.price.toLocaleString('es-AR')} 
+                </td>
                 <td className="px-5 py-5 text-sm">
                   <select 
                     value={horse.statusId}
@@ -89,6 +115,7 @@ const AdminPanel = () => {
                     <option value="1">Disponible</option>
                     <option value="2">Vendido</option>
                     <option value="3">Reservado</option>
+                    <option value="4">No disponible – No verificado</option>
                   </select>
                 </td>
                 <td className="px-5 py-5 text-sm">

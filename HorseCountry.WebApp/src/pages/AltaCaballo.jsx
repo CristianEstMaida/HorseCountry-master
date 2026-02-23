@@ -8,7 +8,7 @@ const AltaCaballo = () => {
     breedId: 1,
     colorId: 1,
     genderId: 4,
-    statusId: 1
+    statusId: 4
 
   });
 
