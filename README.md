@@ -26,37 +26,31 @@ Incluido con Node.
 Cloná el repositorio:
 git clone https://github.com/No-Country-simulation/Equipo-31-Horse-Country.git
 
-
 Entrá a la carpeta del frontend:
 cd Equipo-31-Horse-Country/HorseCountry.WebApp
-
 
 Instalá dependencias:
 npm install
 
-
 Ejecutá el servidor de desarrollo:
 npm run dev
-
 
 La aplicación estará disponible en:
 http://localhost:5173
 
-
-
-📁 Estructura del proyecto
+📁 Estructura del proyecto HorseCountry.WebApp/
+```
 HorseCountry.WebApp/
- ├── src/
- │   ├── assets/         # Imágenes y recursos
- │   ├── components/     # Componentes reutilizables
- │   ├── pages/          # Páginas principales (Home, Catálogo, Detalle, Carrito)
- │   ├── context/        # Context API (carrito, etc.)
- │   ├── hooks/          # Hooks personalizados
- │   └── App.jsx         # Configuración de rutas
- ├── index.html
- └── vite.config.js
-
-
+├── src/
+│   ├── assets/        # Imágenes y recursos
+│   ├── components/    # Componentes reutilizables
+│   ├── pages/         # Páginas principales (Home, Catálogo, Detalle, Carrito)
+│   ├── context/       # Context API (carrito, etc.)
+│   ├── hooks/         # Hooks personalizados
+│   └── App.jsx        # Configuración de rutas
+├── index.html
+└── vite.config.js
+```
 
 🧪 Funcionalidades principales del Frontend
 - Catálogo de caballos con paginación
@@ -75,6 +69,7 @@ HorseCountry.WebApp/
 Backend desarrollado en .NET 10 con Entity Framework Core y PostgreSQL.
 
 🏗️ Estructura del Proyecto
+```
 HorseCountry.API/
  ├── Controllers/        # Endpoints HTTP
  ├── Persistence/
@@ -83,8 +78,7 @@ HorseCountry.API/
  │   ├── Migrations/     # Historial de cambios en BD
  ├── DTOs/               # Data Transfer Objects
  └── Program.cs
-
-
+```
 
 🚀 Endpoints Principales
 🐴 Caballos (Horses)
@@ -114,11 +108,8 @@ Configurar cadena de conexión en appsettings.json.
 Ejecutar migraciones:
 dotnet ef database update
 
-
 Iniciar servidor:
 dotnet run
-
-
 
 🤝 Equipo
 Proyecto desarrollado por Equipo 31 – No Country Simulation
@@ -126,7 +117,6 @@ Trabajo colaborativo entre frontend, backend y QA.
 - QA Tester: Samanta Ramos Podadera
 - Backend: Cristian Maida
 - Frontend: Martín Salvador
-
 
 📝 Licencia
 Proyecto académico – uso libre para fines educativos.
