@@ -5,13 +5,13 @@ const Footer = () => {
     <footer className="flex bg-primary text-cream py-2 px-10">
       <Link to="/" className="flex items-center space-x-3 group">
             <div className="w-12 h-12 
-              bg-gradient-to-br from-[#d4af37] to-[#b8860b] 
+              bg-linear-to-br from-[#d4af37] to-[#b8860b] 
               rounded-lg 
               flex items-center justify-center 
               transform 
               group-hover:scale-110 transition-transform duration-300"
             >
-              <img className="w-10 invert brightness-0 sepia saturate-200 hue-rotate-[20deg]"
+              <img className="w-10 invert brightness-0 sepia saturate-200 hue-rotate-20deg"
                 src={logo} alt="logo silueta de caballo" />
             </div>
             <div className=" sm:block">

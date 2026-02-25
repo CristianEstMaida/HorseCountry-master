@@ -71,7 +71,7 @@ const Hero = () => {
                     </p>
                     <button 
                         onClick={handleExplorarClick}
-                        className="px-8 py-4 bg-secondary text-primary rounded-lg font-bold text-lg hover:bg-[#b8860b] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
+                        className="px-8 py-4 bg-secondary text-primary rounded-lg font-bold text-lg hover:bg-[#b8860b] transition-all shadow-xl hover:shadow-2xl transform hover:scale-105 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
                     >
                         Explorar Catálogo
                     </button>
