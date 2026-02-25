@@ -17,7 +17,7 @@ const BarraBusqueda = ({ onSearch, initialValue = ""  }) => {
         placeholder="Buscar caballo..."
         value={query}
         onChange={handleChange}
-        className="text-[#3d2817] w-full max-w-md px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
+        className="bg-white/70 text-primary w-full max-w-md px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary"
       />
     </div>
   );

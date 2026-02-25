@@ -15,7 +15,7 @@ const BarraBusquedaHome = () => {
 
   return (
     <div className="mt-16 text-center">
-      <h2 className="text-3xl font-semibold text-[#d4af37] mb-6 drop-shadow-sm">
+      <h2 className="text-3xl font-semibold text-secondary mb-6 drop-shadow-sm">
         Explora nuestros ejemplares de élite
       </h2>
 
@@ -23,15 +23,15 @@ const BarraBusquedaHome = () => {
         <div
           className="
             flex items-center w-full max-w-xl 
-            bg-[#f5f5dc]/70 backdrop-blur-sm
-            border border-[#d4af37] 
+            bg-white/70 backdrop-blur-sm
+            border border-secondary 
             rounded-2xl shadow-md 
             px-4 py-3
             transition-all duration-300
             focus-within:shadow-lg
           "
         >
-          <Search className="w-6 h-6 text-[#baa562] mr-3" />
+          <Search className="w-6 h-6 text-secondary mr-3" />
 
           <input
             type="text"
@@ -40,8 +40,8 @@ const BarraBusquedaHome = () => {
             onChange={(e) => setQuery(e.target.value)}
             className="
               flex-1 bg-transparent outline-none 
-              text-[#3d2817] text-lg
-              placeholder:text-[#baa562] placeholder:italic
+              text-primary text-lg
+              placeholder:text-secondary placeholder:italic
             "
           />
         </div>

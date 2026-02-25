@@ -67,7 +67,7 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
   <div className="container mx-auto px-4 py-8">
 
     {/* Título */}
-    <h2 className="text-3xl font-semibold text-[#d4af37] mb-6 text-center drop-shadow-sm">
+    <h2 className="text-3xl font-semibold text-secondary mb-6 text-center drop-shadow-sm">
       Explora todos nuestros ejemplares de élite
     </h2>
 
@@ -84,7 +84,7 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
           key={horse.id}
           className="
             bg-white rounded-2xl overflow-hidden 
-            border border-[#e8e2c8]
+            border border-cream
             shadow-md hover:shadow-xl 
             transition-all duration-300
             hover:-translate-y-1
@@ -104,7 +104,7 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
 
             {/* Nombre + Estado */}
             <div className="flex justify-between items-start mb-3">
-              <h3 className="text-xl font-bold text-[#3d2817]">
+              <h3 className="text-xl font-bold text-primary">
                 {horse.name}
               </h3>
 
@@ -129,16 +129,16 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
 
             {/* Precio + Botón */}
             <div className="flex justify-between items-center border-t pt-4">
-              <span className="text-2xl font-extrabold text-[#3d2817]">
+              <span className="text-2xl font-extrabold text-secondary">
                 ${horse.price.toLocaleString()}
               </span>
 
               <Link to={`/caballo/${horse.id}`}>
                 <button
                   className="
-                    bg-[#3d2817] text-[#f5f5dc] 
+                    bg-primary text-cream 
                     px-4 py-2 rounded-lg font-medium 
-                    hover:bg-[#d4af37] hover:text-[#3d2817]
+                    hover:bg-secondary hover:text-primary
                     transition-colors shadow-sm
                   "
                 >
@@ -158,16 +158,16 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
         disabled={currentPage === 1}
         onClick={() => setCurrentPage(prev => prev - 1)}
         className="
-          px-6 py-2 bg-[#3d2817] text-[#f5f5dc] rounded-lg 
-          disabled:opacity-30 
-          hover:bg-[#d4af37] hover:text-[#3d2817]
+          px-6 py-2 bg-secondary text-cream rounded-lg 
+          disabled:opacity-10 
+          hover:bg-primary hover:text-secondary
           transition-colors font-bold
         "
       >
         Anterior
       </button>
 
-      <span className="text-[#3d2817] font-bold">
+      <span className="text-secondary font-bold">
         Página {currentPage} de {paginationData.totalPages}
       </span>
 
@@ -175,9 +175,9 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
         disabled={currentPage === paginationData.totalPages}
         onClick={() => setCurrentPage(prev => prev + 1)}
         className="
-          px-6 py-2 bg-[#3d2817] text-[#f5f5dc] rounded-lg 
-          disabled:opacity-30 
-          hover:bg-[#d4af37] hover:text-[#3d2817]
+          px-6 py-2 bg-secondary text-cream rounded-lg 
+          disabled:opacity-10 
+          hover:bg-primary hover:text-secondary
           transition-colors font-bold
         "
       >

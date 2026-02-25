@@ -51,7 +51,7 @@ const NavBar = () => {
             </div>
             <div className=" sm:block">
               <h1 className="text-xl font-bold text-cream tracking-wide">Horse Country</h1>
-              <p className="text-xs text-secondary">Caballos de Élite</p>
+              <p className="text-xs text-primary">Caballos de Élite</p>
             </div>
           </Link>
           {/**Menu hamburgesa para celu               <span className="text-2xl font-bold text-cream">HC</span>
