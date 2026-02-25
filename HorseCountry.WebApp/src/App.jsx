@@ -11,13 +11,14 @@ import AltaCaballo from './pages/AltaCaballo'
 import DetalleCaballo from './pages/DetalleCaballo'
 import Carrito from './pages/Carrito'
 import Ticket from './pages/Ticket'
+import Footer from './componentes/Footer'
 
 function App() {
   // --- EL RESTO DEL CÓDIGO VA AQUÍ ---
-  
+
   // 1. Estado para almacenar los caballos en el carrito
   const [carrito, setCarrito] = useState([]);
-  
+
   // 2. Estado para almacenar la información de la última compra realizada
   const [ultimaCompra, setUltimaCompra] = useState(null);
 
@@ -34,14 +35,14 @@ function App() {
     try {
       // 1. Por cada caballo en el carrito, actualizamos su estado en el servidor
       // Usamos el puerto 5233 que es el que te está funcionando
-      const promesasDeActualizacion = carrito.map(horse => 
+      const promesasDeActualizacion = carrito.map(horse =>
         fetch(`http://localhost:5233/api/horses/${horse.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           },
-          body: JSON.stringify({ 
+          body: JSON.stringify({
             statusId: 2 // ID 2 = "Reservado" en tu base de datos
           })
         })
@@ -49,7 +50,7 @@ function App() {
 
       // Esperamos a que todas las peticiones terminen correctamente
       const respuestas = await Promise.all(promesasDeActualizacion);
-      
+
       // Verificamos si alguna petición falló
       if (respuestas.some(res => !res.ok)) {
         throw new Error("Error al actualizar algunos estados");
@@ -85,22 +86,23 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/alta" element={<AltaCaballo />} />
-            
+
             {/* Rutas con las funciones y estados pasados por props */}
-            <Route 
-              path="/caballo/:id" 
-              element={<DetalleCaballo agregarAlCarrito={agregarAlCarrito} />} 
+            <Route
+              path="/caballo/:id"
+              element={<DetalleCaballo agregarAlCarrito={agregarAlCarrito} />}
             />
-            <Route 
-              path="/carrito" 
-              element={<Carrito items={carrito} finalizarCompra={finalizarCompra} />} 
+            <Route
+              path="/carrito"
+              element={<Carrito items={carrito} finalizarCompra={finalizarCompra} />}
             />
-            <Route 
-              path="/ticket" 
-              element={<Ticket compraData={ultimaCompra} />} 
+            <Route
+              path="/ticket"
+              element={<Ticket compraData={ultimaCompra} />}
             />
           </Routes>
         </main>
+        <Footer />
       </BrowserRouter>
     </div>
   )

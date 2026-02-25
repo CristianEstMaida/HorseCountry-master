@@ -2,11 +2,12 @@ import Hero from "../componentes/Hero"
 import SobreNosotros from "../componentes/SobreNosotros"
 import Servicios from "../componentes/Servicios"
 import Testimonios from "../componentes/Testimonios"
-
+import BarraBusquedaHome from "../componentes/BarraBusquedaHome"
 const Home = () => {
     return (
         <div className="min-h-screen bg-[#f5f5dc]">
             <Hero />
+            <BarraBusquedaHome />
             <SobreNosotros />
             <Servicios />
             <Testimonios />
