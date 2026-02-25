@@ -7,11 +7,11 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-[#f5f5dc]">
             <Hero />
-            <BarraBusquedaHome />
-            <SobreNosotros />
+            {/** <BarraBusquedaHome /> */}
             <Servicios />
+            <SobreNosotros />
             <Testimonios />
-            
+
         </div>
     )
 }

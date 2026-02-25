@@ -11,6 +11,7 @@ import AltaCaballo from './pages/AltaCaballo'
 import DetalleCaballo from './pages/DetalleCaballo'
 import Carrito from './pages/Carrito'
 import Ticket from './pages/Ticket'
+import About from './pages/About'
 import Footer from './componentes/Footer'
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/alta" element={<AltaCaballo />} />
+            <Route path="/about" element={<About />} />
 
             {/* Rutas con las funciones y estados pasados por props */}
             <Route
