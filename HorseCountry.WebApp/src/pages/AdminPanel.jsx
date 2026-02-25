@@ -5,8 +5,15 @@ const AdminPanel = () => {
   const [paginationData, setPaginationData] = useState({ items: [], totalPages: 1 });
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
-
+  const [statuses, setStatuses] = useState([]);
   // 2. useEffect corregido con Template Literals (``)
+  useEffect(() => {
+  // Cargamos los estados reales de la DB al iniciar
+    fetch("http://localhost:5233/api/statuses")
+      .then(res => res.json())
+      .then(data => setStatuses(data));
+  }, []);
+
   useEffect(() => {
     const fetchHorses = async () => {
       setLoading(true);
@@ -112,10 +119,9 @@ const AdminPanel = () => {
                     onChange={(e) => handleStatusChange(horse.id, e.target.value)}
                     className="bg-gray-50 border border-gray-300 text-gray-700 py-1 px-3 rounded focus:ring-2 focus:ring-[#8B4513]"
                   >
-                    <option value="1">Disponible</option>
-                    <option value="2">Vendido</option>
-                    <option value="3">Reservado</option>
-                    <option value="4">No disponible – No verificado</option>
+                    {statuses.map(s => (
+                      <option key={s.id} value={s.id}>{s.description}</option>
+                    ))}
                   </select>
                 </td>
                 <td className="px-5 py-5 text-sm">
