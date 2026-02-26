@@ -13,6 +13,7 @@ import Carrito from './pages/Carrito'
 import Ticket from './pages/Ticket'
 import About from './pages/About'
 import Footer from './componentes/Footer'
+import ScrollToTop from './componentes/ScrollToTop'
 
 function App() {
   // --- EL RESTO DEL CÓDIGO VA AQUÍ ---
@@ -80,6 +81,7 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <NavBar carritoCount={carrito.length} />
+         <ScrollToTop /> 
         <main>
           <Routes className="pt-20">
             <Route path='/' element={<Home />} />

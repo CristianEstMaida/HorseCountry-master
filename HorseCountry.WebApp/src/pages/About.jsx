@@ -80,15 +80,15 @@ const About = () => {
                 </div>
 
             </section>
-            <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start text-center lg:text-left">
 
                 {/* Info */}
-                <div>
+                <div >
                     <h2 className="text-2xl font-semibold text-primary mb-4">
                         Dónde estamos
                     </h2>
 
-                    <p className="text-oscuro/80 mb-4">
+                    <p className="text-oscuro/80 mb-4 ">
                         Rancho Horse Country <br />
                         Camino de las Praderas 123 <br />
                         28000 – Campo del Sur
@@ -104,7 +104,7 @@ const About = () => {
                 </div>
 
                 {/* Mapa */}
-                <div className="w-full h-64 md:h-80 rounded-xl overflow-hidden border border-secondary/30 shadow-md">
+                <div className="p-4 w-full h-64 md:h-80 rounded-xl overflow-hidden border border-secondary/30 shadow-md ">
                     <iframe
                         title="Mapa Horse Country"
                         src="https://www.google.com/maps/embed?pb=!1m18..."
