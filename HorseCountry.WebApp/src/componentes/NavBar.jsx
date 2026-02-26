@@ -1,26 +1,14 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import logo from "../assets/logo3.png";
+import { ShoppingCart } from "lucide-react";
 
-const NavBar = () => {
+const NavBar = ({ carritoCount, userRole }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [userRole, setUserRole] = useState(localStorage.getItem("userRole"));
   const navigate = useNavigate(); // ← agregado
   const location = useLocation(); // ← agregado
   const currentPath = location.pathname; // ← agregado
 
-  // Escucha cambios del login (evento personalizado)
-  useEffect(() => {
-    const updateRole = () => {
-      setUserRole(localStorage.getItem("userRole"));
-    };
-
-    window.addEventListener("userRoleChanged", updateRole);
-
-    return () => {
-      window.removeEventListener("userRoleChanged", updateRole);
-    };
-  }, []);
 
   // Cerrar sesión
   const handleLogout = () => {
@@ -28,7 +16,8 @@ const NavBar = () => {
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("userEmail");
 
-    setUserRole(null); // ← actualiza el NavBar
+    window.dispatchEvent(new Event("userRoleChanged"));
+
 
     navigate("/"); // ← redirige al Home
   };
@@ -123,6 +112,22 @@ const NavBar = () => {
                 Iniciar Sesión
               </Link>
             )}
+            {/**Carrito  **/}
+           {userRole === "Comprador" && (
+             <Link to="/carrito" className="relative">
+              <ShoppingCart size={24} />
+
+              {carritoCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-secondary text-cream text-xs rounded-full px-2">
+                  {carritoCount}
+                </span>
+              )}
+            </Link>
+
+           )}
+
+          
+
 
             {/* ADMIN */}
             {userRole === "ADMIN" && (

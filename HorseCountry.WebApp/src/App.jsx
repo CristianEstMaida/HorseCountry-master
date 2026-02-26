@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
-import { useState } from 'react' // Importar useState para el carrito
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { useState , useEffect } from 'react' // Importar useState para el carrito
 import './App.css'
 import Home from './pages/Home'
 import NavBar from './componentes/NavBar'
@@ -16,7 +16,17 @@ import Footer from './componentes/Footer'
 import ScrollToTop from './componentes/ScrollToTop'
 
 function App() {
-  // --- EL RESTO DEL CÓDIGO VA AQUÍ ---
+
+  
+  const [userRole, setUserRole] = useState(localStorage.getItem("userRole"));
+  useEffect(() => {
+  const updateRole = () => {
+    setUserRole(localStorage.getItem("userRole"));
+  };
+
+  window.addEventListener("userRoleChanged", updateRole);
+  return () => window.removeEventListener("userRoleChanged", updateRole);
+}, []);
 
   // 1. Estado para almacenar los caballos en el carrito
   const [carrito, setCarrito] = useState([]);
@@ -80,8 +90,8 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <NavBar carritoCount={carrito.length} />
-         <ScrollToTop /> 
+        <NavBar carritoCount={carrito.length} userRole={userRole}/>
+        <ScrollToTop />
         <main>
           <Routes className="pt-20">
             <Route path='/' element={<Home />} />
@@ -94,11 +104,19 @@ function App() {
             {/* Rutas con las funciones y estados pasados por props */}
             <Route
               path="/caballo/:id"
-              element={<DetalleCaballo agregarAlCarrito={agregarAlCarrito} />}
+              element={<DetalleCaballo 
+                agregarAlCarrito={agregarAlCarrito} 
+                userRole={userRole}
+
+                />}
             />
             <Route
               path="/carrito"
-              element={<Carrito items={carrito} finalizarCompra={finalizarCompra} />}
+              element={<Carrito items={carrito} 
+              finalizarCompra={finalizarCompra} 
+              userRole={userRole}
+
+              />}
             />
             <Route
               path="/ticket"

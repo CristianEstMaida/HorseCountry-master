@@ -15,12 +15,22 @@ const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 
 
 
-const DetalleCaballo = ({ agregarAlCarrito }) => {
+const DetalleCaballo = ({ agregarAlCarrito, userRole }) => {
   const { id } = useParams();
   const [horse, setHorse] = useState(null);
   const navigate = useNavigate();
   const [gallery, setGallery] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const handleAddToCart = () => {
+    console.log("ROL ACTUAL:", userRole); // para ver qué llega
+
+    if (userRole !== "Comprador") { // ajustá al string real que usen
+      alert("Debes iniciar sesión como comprador para usar el carrito.");
+      navigate("/login");
+      return;
+    }
+    agregarAlCarrito(horse);
+  };
 
 
   useEffect(() => {
@@ -105,10 +115,11 @@ const DetalleCaballo = ({ agregarAlCarrito }) => {
             </div>
 
             <button
-              onClick={() => { agregarAlCarrito(horse); navigate("/carrito") }}
-              className="bg-[#3d2817] hover:bg-[#d4af37] text-white hover:text-[#3d2817] 
-               px-4 py-3 md:px-8 md:py-4 rounded-xl font-bold 
-               transition-all duration-300 transform hover:scale-105 shadow-lg w-full md:w-auto"
+              onClick={handleAddToCart}
+
+              className="bg-[#3d2817] hover:bg-[#d4af37] text-white hover:text-[#3d2817]
+             px-4 py-3 md:px-8 md:py-4 rounded-xl font-bold
+             transition-all duration-300 transform hover:scale-105 shadow-lg w-full md:w-auto"
             >
               Añadir al Carrito
             </button>
@@ -216,11 +227,13 @@ const DetalleCaballo = ({ agregarAlCarrito }) => {
 
           {/* Botón Comprar */}
           <button
-            onClick={() => { agregarAlCarrito(horse); navigate("/carrito") }}
-            className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white
-               px-6 py-3 rounded-xl font-bold transition-all duration-300 shadow-lg"
+            onClick={handleAddToCart}
+
+            className="bg-[#3d2817] hover:bg-[#d4af37] text-white hover:text-[#3d2817]
+             px-4 py-3 md:px-8 md:py-4 rounded-xl font-bold
+             transition-all duration-300 transform hover:scale-105 shadow-lg w-full md:w-auto"
           >
-            Comprar
+            Añadir al Carrito
           </button>
 
         </div>
