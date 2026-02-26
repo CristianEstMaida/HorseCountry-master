@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import { useState , useEffect } from 'react' // Importar useState para el carrito
+import { useState, useEffect } from 'react' // Importar useState para el carrito
 import './App.css'
 import Home from './pages/Home'
 import NavBar from './componentes/NavBar'
@@ -17,22 +17,22 @@ import ScrollToTop from './componentes/ScrollToTop'
 
 function App() {
 
-  
+
   const [userRole, setUserRole] = useState(localStorage.getItem("userRole"));
   useEffect(() => {
-  const updateRole = () => {
-    setUserRole(localStorage.getItem("userRole"));
-  };
+    const updateRole = () => {
+      setUserRole(localStorage.getItem("userRole"));
+    };
 
-  window.addEventListener("userRoleChanged", updateRole);
-  return () => window.removeEventListener("userRoleChanged", updateRole);
-}, []);
+    window.addEventListener("userRoleChanged", updateRole);
+    return () => window.removeEventListener("userRoleChanged", updateRole);
+  }, []);
 
   // 1. Estado para almacenar los caballos en el carrito
   const [carrito, setCarrito] = useState([]);
   const eliminarDelCarrito = (id) => {
-  setCarrito(prev => prev.filter(item => item.id !== id));
-};
+    setCarrito(prev => prev.filter(item => item.id !== id));
+  };
 
 
   // 2. Estado para almacenar la información de la última compra realizada
@@ -94,32 +94,41 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <NavBar carritoCount={carrito.length} userRole={userRole}/>
+        <NavBar carritoCount={carrito.length} userRole={userRole} />
         <ScrollToTop />
         <main>
           <Routes className="pt-20">
-            <Route path='/' element={<Home />} />
+            <Route path="/" element={<Home userRole={userRole} />} />
+
             <Route path="/catalogo" element={<Catalogo />} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/alta" element={<AltaCaballo />} />
+            <Route
+              path="/alta"
+              element={
+                userRole === "Vendedor"
+                  ? <AltaCaballo />
+                  : <Navigate to="/login" />
+              }
+            />
+
             <Route path="/about" element={<About />} />
 
             {/* Rutas con las funciones y estados pasados por props */}
             <Route
               path="/caballo/:id"
-              element={<DetalleCaballo 
-                agregarAlCarrito={agregarAlCarrito} 
+              element={<DetalleCaballo
+                agregarAlCarrito={agregarAlCarrito}
                 userRole={userRole}
 
-                />}
+              />}
             />
             <Route
               path="/carrito"
-              element={<Carrito items={carrito} 
-              finalizarCompra={finalizarCompra} 
-              eliminarDelCarrito={eliminarDelCarrito}
-              userRole={userRole}
+              element={<Carrito items={carrito}
+                finalizarCompra={finalizarCompra}
+                eliminarDelCarrito={eliminarDelCarrito}
+                userRole={userRole}
 
               />}
             />

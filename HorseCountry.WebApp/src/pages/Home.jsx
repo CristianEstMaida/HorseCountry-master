@@ -3,12 +3,13 @@ import SobreNosotros from "../componentes/SobreNosotros"
 import Servicios from "../componentes/Servicios"
 import Testimonios from "../componentes/Testimonios"
 import BarraBusquedaHome from "../componentes/BarraBusquedaHome"
-const Home = () => {
+const Home = ({ userRole }) => {
     return (
         <div className="min-h-screen bg-[#f5f5dc]">
             <Hero />
             {/** <BarraBusquedaHome /> */}
-            <Servicios />
+            <Servicios userRole={userRole} />
+
             <SobreNosotros />
             <Testimonios />
 
