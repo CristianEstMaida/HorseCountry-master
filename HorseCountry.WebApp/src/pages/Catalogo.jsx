@@ -8,7 +8,7 @@ const Catalogo = () => {
 
 
   return (
-    <div className="pt-24 min-h-screen bg-cream"> 
+    <div className="min-h-screen bg-cream"> 
       <div className="container mx-auto px-4 py-4">
         {/**<h1 className="text-4xl font-bold text-[#3d2817]  text-center">
           Catálogo Completo

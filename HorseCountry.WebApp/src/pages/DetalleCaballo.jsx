@@ -56,7 +56,7 @@ const DetalleCaballo = ({ agregarAlCarrito, userRole }) => {
   if (!horse) return <div className="p-10 text-center">Cargando detalles...</div>;
 
   return (
-    <div className="min-h-[calc(100vh-80px)] bg-[#f5f5dc] flex flex-col items-center px-4 pt-20">
+    <div className="min-h-[calc(100vh-80px)] bg-[#f5f5dc] flex flex-col items-center px-4 pt-10">
       <div className="max-w-5xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-gray-100">
 
         {/* Imagen principal */}
