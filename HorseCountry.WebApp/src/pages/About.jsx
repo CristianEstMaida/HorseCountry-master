@@ -1,3 +1,7 @@
+import veterinaria from '../assets/personal/veterinaria.jpg'
+import entrenador from '../assets/personal/entrenador.jpg'
+import establo from '../assets/personal/establo.jpg'
+import directora from '../assets/personal/directora.jpg'
 
 
 
@@ -8,24 +12,28 @@ const About = () => {
             role: "Directora del Rancho",
             description:
                 "Más de 15 años liderando programas de cría y selección de caballos deportivos.",
+            image: directora
         },
         {
             name: "Julián Romero",
             role: "Entrenador Principal",
             description:
                 "Especialista en doma racional y preparación de caballos para salto y adiestramiento.",
+            image: entrenador
         },
         {
             name: "Carla Méndez",
             role: "Veterinaria",
             description:
                 "Responsable de la salud, nutrición y bienestar de todos los ejemplares del rancho.",
+            image: veterinaria
         },
         {
             name: "Santiago López",
             role: "Encargado de Establo",
             description:
                 "Coordina el cuidado diario, manejo y rutinas de descanso de los caballos.",
+            image: establo
         },
     ];
     const brands = [
@@ -46,15 +54,22 @@ const About = () => {
             </section>
             {/** Sección de equipo */}
             <section>
-                <h2 className="text-2xl font-semibold text-primary mb-4">
+                <h2 className="text-2xl font-semibold text-primary mb-6">
                     Nuestro equipo
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {staff.map((person) => (
                         <div
                             key={person.name}
-                            className="bg-cream/60 border border-secondary/20 rounded-xl p-4 shadow-sm"
+                            className="bg-cream/60 border border-secondary/20 rounded-xl p-4 shadow-sm flex flex-col items-center text-center"
                         >
+
+                            <img
+                                src={person.image}
+                                alt={person.name}
+                                className="w-35 h-50 md:w-50 object-cover rounded-full border-4 border-secondary/40 shadow-md mb-4"
+                            />
+
                             <h3 className="text-lg font-bold text-oscuro">{person.name}</h3>
                             <p className="text-sm text-secondary font-semibold mb-2">
                                 {person.role}
@@ -63,49 +78,51 @@ const About = () => {
                         </div>
                     ))}
                 </div>
+
             </section>
-            <section className="mb-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                {/* Info de contacto */}
+            <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+                {/* Info */}
                 <div>
                     <h2 className="text-2xl font-semibold text-primary mb-4">
                         Dónde estamos
                     </h2>
+
                     <p className="text-oscuro/80 mb-4">
-                        Rancho Horse Country
-                        <br />
-                        Camino de las Praderas 123
-                        <br />
+                        Rancho Horse Country <br />
+                        Camino de las Praderas 123 <br />
                         28000 – Campo del Sur
                     </p>
 
                     <p className="text-oscuro/80 mb-2">
                         <span className="font-semibold">Email:</span> contacto@horsecountry.com
                     </p>
+
                     <p className="text-oscuro/80 mb-2">
                         <span className="font-semibold">Teléfono:</span> +34 600 123 456
                     </p>
                 </div>
 
                 {/* Mapa */}
-                <div className="w-full h-64 lg:h-80 rounded-xl overflow-hidden border border-secondary/30 shadow-md">
+                <div className="w-full h-64 md:h-80 rounded-xl overflow-hidden border border-secondary/30 shadow-md">
                     <iframe
                         title="Mapa Horse Country"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9556513153169!3d-37.8173279797517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ5JzAyLjQiUyAxNDTCsDU3JzIyLjQiRQ!5e0!3m2!1ses!2s!4v1700000000000"
+                        src="https://www.google.com/maps/embed?pb=!1m18..."
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
-                        allowFullScreen=""
                         loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
                 </div>
+
             </section>
             {/** Sección de marcas y aliados */}
-            <section className="mb-12">
-                <h2 className="text-2xl font-semibold text-primary mb-4">
+            <section>
+                <h2 className="text-2xl font-semibold text-primary mb-6">
                     Marcas y aliados
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {brands.map((brand) => (
                         <div
                             key={brand.name}
