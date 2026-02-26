@@ -69,12 +69,13 @@ const Hero = () => {
                     <p className="text-xl md:text-2xl text-secondary mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
                         {heroImages[currentIndex].subtitle}
                     </p>
-                    <button 
+                    {/**<button 
                         onClick={handleExplorarClick}
                         className="px-8 py-4 bg-secondary text-primary rounded-lg font-bold text-lg hover:bg-[#b8860b] transition-all shadow-xl hover:shadow-2xl transform hover:scale-105 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
                     >
                         Explorar Catálogo
-                    </button>
+                    </button> */}
+                    
 
                 </div>
 

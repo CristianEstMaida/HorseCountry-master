@@ -8,11 +8,12 @@ const Catalogo = () => {
 
 
   return (
-    <div className="pt-24 min-h-screen bg-[#f5f5dc]"> 
+    <div className="min-h-screen bg-cream"> 
       <div className="container mx-auto px-4 py-4">
-        <h1 className="text-4xl font-bold text-[#3d2817]  text-center">
+        {/**<h1 className="text-4xl font-bold text-[#3d2817]  text-center">
           Catálogo Completo
-        </h1>
+        </h1> */}
+        
        
         <HorseGrid initialSearch={initialSearch}/>
       </div>

@@ -64,11 +64,11 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
 
 
   return (
-  <div className="container mx-auto px-4 py-8">
+  <div className="container mx-auto px-4 py-4">
 
     {/* Título */}
-    <h2 className="text-3xl font-semibold text-secondary mb-6 text-center drop-shadow-sm">
-      Explora todos nuestros ejemplares de élite
+    <h2 className="text-4xl font-semibold text-primary mb-6 text-center drop-shadow-sm">
+      Explora nuestros ejemplares de élite
     </h2>
 
     {/* Barra de búsqueda */}

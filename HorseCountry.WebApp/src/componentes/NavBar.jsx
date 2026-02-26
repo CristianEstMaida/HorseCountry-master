@@ -1,24 +1,14 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import logo from "../assets/logo3.png";
+import { ShoppingCart } from "lucide-react";
 
-const NavBar = () => {
+const NavBar = ({ carritoCount, userRole }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [userRole, setUserRole] = useState(localStorage.getItem("userRole"));
   const navigate = useNavigate(); // ← agregado
+  const location = useLocation(); // ← agregado
+  const currentPath = location.pathname; // ← agregado
 
-  // Escucha cambios del login (evento personalizado)
-  useEffect(() => {
-    const updateRole = () => {
-      setUserRole(localStorage.getItem("userRole"));
-    };
-
-    window.addEventListener("userRoleChanged", updateRole);
-
-    return () => {
-      window.removeEventListener("userRoleChanged", updateRole);
-    };
-  }, []);
 
   // Cerrar sesión
   const handleLogout = () => {
@@ -26,7 +16,8 @@ const NavBar = () => {
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("userEmail");
 
-    setUserRole(null); // ← actualiza el NavBar
+    window.dispatchEvent(new Event("userRoleChanged"));
+
 
     navigate("/"); // ← redirige al Home
   };
@@ -72,9 +63,10 @@ const NavBar = () => {
           {/* Menú */}
           <div className="hidden md:flex items-center space-x-8">
 
-            <Link onClick={() => window.scrollTo(0, 0)}
-              to="/"
-              className="px-6 py-2.5 
+            {currentPath !== "/" && (
+              <Link onClick={() => window.scrollTo(0, 0)}
+                to="/"
+                className="px-6 py-2.5 
                 bg-primary text-cream hover:bg-secondary
                 rounded-lg 
                 font-semibold
@@ -82,13 +74,15 @@ const NavBar = () => {
                 duration-200 
                 shadow-md 
                 hover:shadow-xl"
-            >
-              Inicio
-            </Link>
+              >
+                Inicio
+              </Link>
+            )}
 
-            <Link onClick={() => window.scrollTo(0, 0)}
-              to="/catalogo"
-              className="px-6 py-2.5 
+            {currentPath !== "/catalogo" && (
+              <Link onClick={() => window.scrollTo(0, 0)}
+                to="/catalogo"
+                className="px-6 py-2.5 
                  bg-primary text-cream hover:bg-secondary
                 rounded-lg 
                 font-semibold
@@ -96,12 +90,16 @@ const NavBar = () => {
                 duration-200 
                 shadow-md 
                 hover:shadow-xl"
-            >
-              Catálogo
-            </Link>
+              >
+                Catálogo
+              </Link>
+
+            )}
+
+
 
             {/* Si NO hay usuario → mostrar Iniciar Sesión */}
-            {!userRole && (
+            {!userRole && currentPath !== "/login" && (
               <Link
                 onClick={() => window.scrollTo(0, 0)}
                 to="/login"
@@ -114,10 +112,26 @@ const NavBar = () => {
                 Iniciar Sesión
               </Link>
             )}
+            {/**Carrito  **/}
+           {userRole === "Comprador" && (
+             <Link to="/carrito" className="relative">
+              <ShoppingCart size={24} />
+
+              {carritoCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-secondary text-cream text-xs rounded-full px-2">
+                  {carritoCount}
+                </span>
+              )}
+            </Link>
+
+           )}
+
+          
+
 
             {/* ADMIN */}
             {userRole === "ADMIN" && (
-              <Link onClick={() => window.scrollTo(0, 0)} to="/admin"className="px-6 py-2.5
+              <Link onClick={() => window.scrollTo(0, 0)} to="/admin" className="px-6 py-2.5
                 bg-secondary text-oscuro hover:bg-mostaza  
                 rounded-lg 
                 font-semibold  
@@ -128,7 +142,7 @@ const NavBar = () => {
 
             {/* Vendedor */}
             {userRole === "Vendedor" && (
-              <Link onClick={() => window.scrollTo(0, 0)} to="/alta"className="px-6 py-2.5
+              <Link onClick={() => window.scrollTo(0, 0)} to="/alta" className="px-6 py-2.5
                 bg-secondary text-oscuro hover:bg-mostaza  
                 rounded-lg 
                 font-semibold  
