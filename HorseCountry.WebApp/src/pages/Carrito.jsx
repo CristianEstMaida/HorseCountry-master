@@ -7,6 +7,7 @@ const Carrito = ({ items, finalizarCompra, eliminarDelCarrito }) => {
   const total = items.reduce((acc, item) => acc + (item.price || 0), 0);
 
 
+
   return (
     <div className="min-h-screen bg-[#f5f5dc] py-40 px-8">
       <h2 className="text-3xl font-bold text-[#3d2817] mb-8 text-center uppercase tracking-wider">
