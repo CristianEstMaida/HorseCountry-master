@@ -38,7 +38,10 @@ const Servicios = ({ userRole }) => {
             </p>
 
             <button
+            
               onClick={() => {
+                window.scrollTo(0, 0);
+
                 if (!userRole) {
                   alert("Debes iniciar sesión para publicar un caballo.");
                   navigate("/login");
@@ -53,7 +56,9 @@ const Servicios = ({ userRole }) => {
 
                 navigate("/alta");
               }}
-              className="inline-block bg-[#3d2817] text-[#f5f5dc] px-6 py-3 rounded-lg font-semibold hover:bg-[#5a3a22] transition"
+              className="inline-block bg-[#3d2817]
+               text-[#f5f5dc] px-6 py-3 
+               rounded-lg font-semibold hover:bg-[#5a3a22] transition"
             >
               Publicar caballo
             </button>
