@@ -30,6 +30,10 @@ function App() {
 
   // 1. Estado para almacenar los caballos en el carrito
   const [carrito, setCarrito] = useState([]);
+  const eliminarDelCarrito = (id) => {
+  setCarrito(prev => prev.filter(item => item.id !== id));
+};
+
 
   // 2. Estado para almacenar la información de la última compra realizada
   const [ultimaCompra, setUltimaCompra] = useState(null);
@@ -114,6 +118,7 @@ function App() {
               path="/carrito"
               element={<Carrito items={carrito} 
               finalizarCompra={finalizarCompra} 
+              eliminarDelCarrito={eliminarDelCarrito}
               userRole={userRole}
 
               />}

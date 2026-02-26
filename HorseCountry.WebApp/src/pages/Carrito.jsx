@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { ShoppingCart } from "lucide-react";
 
-const Carrito = ({ items, finalizarCompra }) => {
+const Carrito = ({ items, finalizarCompra, eliminarDelCarrito }) => {
   const navigate = useNavigate(); // Creamos la función aquí
   const total = items.reduce((acc, item) => acc + item.price, 0);
 
@@ -49,6 +49,14 @@ const Carrito = ({ items, finalizarCompra }) => {
                 <span className="font-black text-blue-700 text-xl">
                   ${item.price.toLocaleString()}
                 </span>
+                <button
+                  onClick={() => eliminarDelCarrito(item.id)}
+                  className="px-3 py-1 bg-red-100 text-red-700 rounded-lg font-semibold hover:bg-red-200 transition shadow-sm"
+                >
+                  Quitar
+                </button>
+
+
               </div>
             ))}
           </div>
