@@ -24,7 +24,7 @@ export default function ScrollToTop() {
     <button
       aria-label="Volver arriba"
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-6 flex items-center justify-center p-3 rounded-full 
+      className={`fixed bottom-6 md:bottom-30 right-6 z-9999 flex items-center justify-center p-3 rounded-full 
                   bg-primary text-cream shadow-lg transition-all duration-300 
                   hover:bg-secondary hover:shadow-xl hover:-translate-y-1
                   ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
