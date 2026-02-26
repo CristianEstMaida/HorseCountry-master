@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import pdfVeterinario from '../assets/pdf/veterinario.pdf';
 import img1 from '../assets/caballos/caballo1.jpg';
 import img2 from '../assets/caballos/caballo2.jpg';
 import img3 from '../assets/caballos/caballo3.jpg';
@@ -205,12 +206,13 @@ const DetalleCaballo = ({ agregarAlCarrito }) => {
 
           {/* Botón PDF */}
           <button
-            onClick={() => console.log("Descargar PDF veterinario")}
+            onClick={() => window.open(pdfVeterinario, "_blank")}
             className="w-full md:w-auto bg-[#3d2817] hover:bg-[#d4af37] text-white hover:text-[#3d2817]
-               px-6 py-3 rounded-xl font-bold transition-all duration-300 shadow-lg"
+             px-6 py-3 rounded-xl font-bold transition-all duration-300 shadow-lg"
           >
             Descargar PDF Veterinario
           </button>
+
 
           {/* Botón Comprar */}
           <button
