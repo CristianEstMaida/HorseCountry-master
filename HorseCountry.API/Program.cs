@@ -77,6 +77,7 @@ public partial class Program
         app.UseHttpsRedirection();
 
         app.UseAuthentication();
+        app.UseStaticFiles();
         app.UseAuthorization();
 
         app.MapGroup("api/login").MapIdentityApi<User>();

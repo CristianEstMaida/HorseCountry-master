@@ -3,6 +3,7 @@ using System;
 using HorseCountry.API.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HorseCountry.API.Migrations
 {
     [DbContext(typeof(HorseDbContext))]
-    partial class HorseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260303190157_AddImageUrlToHorse")]
+    partial class AddImageUrlToHorse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
