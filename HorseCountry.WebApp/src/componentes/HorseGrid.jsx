@@ -23,10 +23,10 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5233/api/horses?page=${currentPage}&pageSize=8`)
+    fetch(`https://horsecountry-master.onrender.com/api/horses?page=${currentPage}&pageSize=8`)
       .then((res) => res.json())
       .then((data) => {
-        const baseApiUrl = "http://localhost:5233";
+        const baseApiUrl = "https://horsecountry-master.onrender.com/";
         const fallback = "/images/fallback.png";
         const listaOriginal = data.items || data; 
         const disponibles = listaOriginal.filter(h => (h.statusId || h.StatusId) === 1);

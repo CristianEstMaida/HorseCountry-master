@@ -17,19 +17,19 @@ const [colors, setColors] = useState([]); // Agregado para evitar errores de FK
 const [genders, setGenders] = useState([]); // Agregado para evitar errores de FK
 useEffect(() => {
     // Cargar Razas
-    fetch('http://localhost:5233/api/breeds') 
+    fetch('https://horsecountry-master.onrender.com/api/breeds') 
       .then(res => res.json())
       .then(data => setBreeds(data))
       .catch(err => console.error("Error razas:", err));
 
     // Cargar Colores
-    fetch('http://localhost:5233/api/colors') 
+    fetch('https://horsecountry-master.onrender.com/api/colors') 
       .then(res => res.json())
       .then(data => setColors(data))
       .catch(err => console.error("Error colores:", err));
 
     // Cargar Géneros
-    fetch('http://localhost:5233/api/genders') 
+    fetch('https://horsecountry-master.onrender.com/api/genders') 
       .then(res => res.json())
       .then(data => setGenders(data))
       .catch(err => console.error("Error géneros:", err));
@@ -57,7 +57,7 @@ useEffect(() => {
     formDataToSend.append("ImageFile", file); 
   }
   try {
-    const response = await fetch('http://localhost:5233/api/horses', {
+    const response = await fetch('https://horsecountry-master.onrender.com/api/horses', {
       method: 'POST',
       headers: {
         //'Content-Type': 'application/json',
