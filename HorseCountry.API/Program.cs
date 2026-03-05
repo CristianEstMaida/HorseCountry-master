@@ -78,6 +78,10 @@ public partial class Program
 
         app.UseAuthentication();
         app.UseStaticFiles();
+
+        var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+        app.Urls.Add($"http://0.0.0.0:{port}");
+
         app.UseAuthorization();
 
         app.MapGroup("api/login").MapIdentityApi<User>();
