@@ -9,7 +9,7 @@ const AdminPanel = () => {
   // 2. useEffect corregido con Template Literals (``)
   useEffect(() => {
   // Cargamos los estados reales de la DB al iniciar
-    fetch("http://localhost:5233/api/statuses")
+    fetch("https://horsecountry-master.onrender.com/api/statuses")
       .then(res => res.json())
       .then(data => setStatuses(data));
   }, []);
@@ -19,7 +19,7 @@ const AdminPanel = () => {
       setLoading(true);
       try {
         // IMPORTANTE: Se usan backticks (`) para que ${currentPage} funcione
-        const response = await fetch(`http://localhost:5233/api/horses?page=${currentPage}&pageSize=8`);
+        const response = await fetch(`https://horsecountry-master.onrender.com/api/horses?page=${currentPage}&pageSize=8`);
         const data = await response.json();
         
         // Guardamos el objeto completo que trae .items y .totalPages
@@ -52,7 +52,7 @@ const AdminPanel = () => {
       genderId: horseActual.genderId || horseActual.GenderId
       };
 
-      const response = await fetch(`http://localhost:5233/api/horses/${id}`, {
+      const response = await fetch(`https://horsecountry-master.onrender.com/api/horses/${id}`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

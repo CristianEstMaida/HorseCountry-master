@@ -61,7 +61,7 @@ function App() {
       // 1. Por cada caballo en el carrito, actualizamos su estado en el servidor
       // Usamos el puerto 5233 que es el que te está funcionando
       const promesasDeActualizacion = cart.map(horse =>
-        fetch(`http://localhost:5233/api/horses/${horse.id}`, {
+        fetch(`https://horsecountry-master.onrender.com/api/horses/${horse.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
