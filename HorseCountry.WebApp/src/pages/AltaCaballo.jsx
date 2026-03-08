@@ -59,11 +59,11 @@ useEffect(() => {
   try {
     const response = await fetch('https://horsecountry-master.onrender.com/api/horses', {
       method: 'POST',
-      headers: {
+      //headers: {
         //'Content-Type': 'application/json',
         // Si usas autenticación, no olvides el token
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      },
+        //'Authorization': `Bearer ${localStorage.getItem('token')}`
+      //},
       body: formDataToSend
       //body: JSON.stringify(horseData) // Enviamos el objeto procesado
     });
