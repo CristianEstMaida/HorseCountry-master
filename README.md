@@ -120,3 +120,5 @@ Trabajo colaborativo entre frontend, backend y QA.
 
 📝 Licencia
 Proyecto académico – uso libre para fines educativos.
+
+Backend originalmente desplegado en la nube con .NET 10 y PostgreSQL. Actualmente el servicio no está activo, pero el código y la arquitectura se encuentran disponibles en el repositorio.
